@@ -30,7 +30,7 @@ LDFLAGS="-s"
 CXXFLAGS="$RPM_OPT_FLAGS"
 export LDFLAGS CXXFLAGS
 %configure
-make
+%{__make}
 
 %install
 %{__make} install
