@@ -9,9 +9,8 @@ Group:		Applications/Editors
 Source0:	ftp://ftp.kde.org/pub/kde/Attic/old/1.1.2/apps/utils/%{name}-V%{version}.tgz
 # Source0-md5:	7c0673f36d350d5ca2bc45774d05c8f0
 Patch0:		%{name}-%{version}.patch.bz2
-URL:		http://ixtas.fri.uni-lj.si/~markom/fte
+#URL:		http://ixtas.fri.uni-lj.si/~markom/fte/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
 
 %description
 KDE FTE - A syntax highlighting programmer editor.
