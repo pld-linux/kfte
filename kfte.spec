@@ -9,7 +9,7 @@ Group(pl):	Aplikacje/Edytory
 Source:		%{name}-%{version}.tar.bz2
 Patch:		%{name}-%{version}.patch.bz2
 URL:		http://ixtas.fri.uni-lj.si/~markom/fte
-BuildRoot:	/tmp/%{name}-%{version}-root
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
 
