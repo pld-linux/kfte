@@ -1,5 +1,6 @@
 Summary:	KDE FTE - A syntax highlighting programmer editor
 Summary(fr):	KDE FTE - Un editeur avec colorisation de la syntaxe
+Summary(pl):	KDE FTE - edytor programisty z pod¶wietlaniem sk³adni
 Name:		kfte
 Version:	6.1
 Release:	1
@@ -16,10 +17,13 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		_prefix		/usr/X11R6
 
 %description
-KDE FTE - A syntax highlighting programmer editor
+KDE FTE - A syntax highlighting programmer editor.
 
 %description -l fr
-KDE FTE - Un editeur avec colorisation de la syntaxe
+KDE FTE - Un editeur avec colorisation de la syntaxe.
+
+%description -l pl
+KDE FTE - edytor programisty z pod¶wietlaniem sk³adni.
 
 %prep
 %setup -q
@@ -34,10 +38,10 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install
 # prefix=$RPM_BUILD_ROOT/%{prefix}
-tar cf - config | ( cd $RPM_BUILD_ROOT%{prefix}/share/apps/%{name}/ ; tar xf - )
-cd $RPM_BUILD_ROOT%{prefix}/share/apps/%{name}
+tar cf - config | ( cd $RPM_BUILD_ROOT%{_datadir}/apps/%{name}/ ; tar xf - )
+cd $RPM_BUILD_ROOT%{_datadir}/apps/%{name}
 install -d $RPM_BUILD_ROOT%{_sysconfdir}/skel
-$RPM_BUILD_ROOT%{prefix}/bin/cfte config/main.fte $RPM_BUILD_ROOT%{_sysconfdir}/skel/.fterc
+$RPM_BUILD_ROOT%{_bindir}/cfte config/main.fte $RPM_BUILD_ROOT%{_sysconfdir}/skel/.fterc
 
 cd $RPM_BUILD_ROOT
 find . -type d | sed -e '1,2d;s,^\.,\%attr(-\,root\,root) \%dir ,' > \
