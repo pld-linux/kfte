@@ -33,7 +33,7 @@ export LDFLAGS CXXFLAGS
 make
 
 %install
-make install
+%{__make} install
 # prefix=$RPM_BUILD_ROOT/%{prefix}
 tar cf - config | ( cd $RPM_BUILD_ROOT%{prefix}/share/apps/%{name}/ ; tar xf - )
 cd $RPM_BUILD_ROOT%{prefix}/share/apps/%{name}
