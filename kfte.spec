@@ -33,8 +33,8 @@ KDE FTE - edytor programisty z pod¶wietlaniem sk³adni.
 rm -rf $RPM_BUILD_ROOT
 
 %{__make} install
-# prefix=$RPM_BUILD_ROOT/%{prefix}
-tar cf - config | ( cd $RPM_BUILD_ROOT%{_datadir}/apps/%{name}/ ; tar xf - )
+# prefix=$RPM_BUILD_ROOT%{prefix}
+tar cf - config | ( cd $RPM_BUILD_ROOT%{_datadir}/apps/%{name} ; tar xf - )
 cd $RPM_BUILD_ROOT%{_datadir}/apps/%{name}
 install -d $RPM_BUILD_ROOT%{_sysconfdir}/skel
 $RPM_BUILD_ROOT%{_bindir}/cfte config/main.fte $RPM_BUILD_ROOT%{_sysconfdir}/skel/.fterc
