@@ -11,7 +11,6 @@ Patch0:		%{name}-%{version}.patch.bz2
 URL:		http://ixtas.fri.uni-lj.si/~markom/fte
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_prefix		/usr/X11R6
 
 %description
 KDE FTE - A syntax highlighting programmer editor.
