@@ -1,21 +1,17 @@
-%define name kfte
-%define version 6.1
-%define release 1mdk
+Summary:	KDE FTE - A syntax highlighting programmer editor
+Summary(fr):	KDE FTE - Un editeur avec colorisation de la syntaxe
+Name:		kfte
+Version:	6.1
+Release:	1
+License:	GPL
+Group:		Applications/Editors
+Group(pl):	Aplikacje/Edytory
+Source:		%{name}-%{version}.tar.bz2
+Patch:		%{name}-%{version}.patch.bz2
+URL:		http://ixtas.fri.uni-lj.si/~markom/fte
+BuildRoot:	/tmp/%{name}-%{version}-root
 
-Name: %{name}
-Summary: KDE FTE - A syntax highlighting programmer editor
-Summary(fr): KDE FTE - Un editeur avec colorisation de la syntaxe
-Version: %{version}
-Release: %{release}
-Source: %{name}-%{version}.tar.bz2
-Patch: %{name}-%{version}.patch.bz2
-Group: Applications/Editors
-URL: http://ixtas.fri.uni-lj.si/~markom/fte
-BuildRoot: /tmp/%{name}-buildroot
-Copyright: GPL
-Packager: Lenny Cartier (lenny@mandrakesoft.com)
-Distribution: Mandrake
-Prefix: /usr
+%define		_prefix		/usr/X11R6
 
 %description
 KDE FTE - A syntax highlighting programmer editor
@@ -30,20 +26,22 @@ rm -rf $RPM_BUILD_ROOT
 %patch -p0
 
 %build
-CFLAGS="$RPM_OPT_FLAGS" CXXFLAGS="$RPM_OPT_FLAGS" ./configure \
-	--prefix=%{prefix} --with-install-root=$RPM_BUILD_ROOT
-make -j 2
+LDFLAGS="-s"
+CXXFLAGS="$RPM_OPT_FLAGS"
+export LDFLAGS CXXFLAGS
+%configure
+make
 
 %install
 make install
 # prefix=$RPM_BUILD_ROOT/%{prefix}
 tar cf - config | ( cd $RPM_BUILD_ROOT%{prefix}/share/apps/%{name}/ ; tar xf - )
 cd $RPM_BUILD_ROOT%{prefix}/share/apps/%{name}
-mkdir -p $RPM_BUILD_ROOT/etc/skel
-$RPM_BUILD_ROOT%{prefix}/bin/cfte config/main.fte $RPM_BUILD_ROOT/etc/skel/.fterc
+install -d $RPM_BUILD_ROOT%{_sysconfdir}/skel
+$RPM_BUILD_ROOT%{prefix}/bin/cfte config/main.fte $RPM_BUILD_ROOT%{_sysconfdir}/skel/.fterc
 
-if [ -d $RPM_BUILD_ROOT/usr/man ]; then
-  find $RPM_BUILD_ROOT/usr/man -type f -exec bzip2 -9f {} \;
+if [ -d $RPM_BUILD_ROOT%{_prefix}/man ]; then
+  find $RPM_BUILD_ROOT%{_prefix}/man -type f -exec bzip2 -9f {} \;
 fi
 if [ -d $RPM_BUILD_ROOT/usr/info ]; then
   find $RPM_BUILD_ROOT/usr/info -type f -exec bzip2 -9f {} \;
@@ -71,15 +69,4 @@ find . -type l | sed -e 's,^\.,\%attr(-\,root\,root) ,' >> \
 rm -rf $RPM_BUILD_ROOT $RPM_BUILD_DIR/file.list.%{name}
 
 %files -f ../file.list.%{name}
-%defattr(-,root,root,0755)
-
-%changelog
-* Tue Oct 19 1999 Lenny Cartier <lenny@mandrakesoft.com>
-- Specfile adaptation for Mandrake
-
-* Fri Aug 06 1999 Stefan Siegel <siegel@informatik.uni-kl.de>
-- Added "config" tag for files containing /etc or /config
-- Added compression for perl- and localized man-pages
-
-* Sat Jun 26 1999 Bernhard Rosenkraenzer <bero@mandrakesoft.com>
-- create (more or less) generic spec file...
+%defattr(644,root,root,755)
