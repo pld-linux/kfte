@@ -8,8 +8,8 @@ Group:		Applications/Editors
 Group(de):	Applikationen/Editors
 Group(pl):	Aplikacje/Edytory
 Group(pt):	Aplicações/Editores
-Source:		%{name}-%{version}.tar.bz2
-Patch:		%{name}-%{version}.patch.bz2
+Source0:	ftp://ftp.kde.org/pub/kde/Attic/old/1.1.2/apps/utils/%{name}-V%{version}.tar.bz2
+Patch0:		%{name}-%{version}.patch.bz2
 URL:		http://ixtas.fri.uni-lj.si/~markom/fte
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
