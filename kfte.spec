@@ -35,10 +35,13 @@ KDE FTE - edytor programisty z pod¶wietlaniem sk³adni.
 
 %install
 rm -rf $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT%{_desktopdir}/kde
 
 %{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT \
-	kde_appsdir=%{_applnkdir}
+	DESTDIR=$RPM_BUILD_ROOT 
+
+mv $RPM_BUILD_ROOT%{_datadir}/applnk/Utilities/kfte.desktop $RPM_BUILD_ROOT%{_desktopdir}/kde
+
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -48,5 +51,5 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/kfte
 # other FTE versions - here? there is no other *FTE package
 %attr(755,root,root) %{_bindir}/[cqvx]fte
-%{_applnkdir}/Utilities/kfte.desktop
+%{_desktopdir}/kde/kfte.desktop
 %{_datadir}/apps/kfte
