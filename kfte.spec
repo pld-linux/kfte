@@ -12,7 +12,7 @@ Source0:	http://dl.sourceforge.net/kfte/%{name}-%{version}.tar.bz2
 URL:		http://sourceforge.net/projects/kfte/
 BuildRequires:	fam-devel
 BuildRequires:	gpm-devel
-BuildRequires:	kdelibs-devel >= 3.1
+BuildRequires:	kdelibs-devel >= 9:3.1
 BuildRequires:	libart_lgpl-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
