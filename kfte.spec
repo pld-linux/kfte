@@ -1,6 +1,6 @@
 Summary:	KDE FTE - A syntax highlighting programmer editor
-Summary(fr):	KDE FTE - Un editeur avec colorisation de la syntaxe
-Summary(pl):	KDE FTE - edytor programisty z pod¶wietlaniem sk³adni
+Summary(fr.UTF-8):   KDE FTE - Un editeur avec colorisation de la syntaxe
+Summary(pl.UTF-8):   KDE FTE - edytor programisty z podÅ›wietlaniem skÅ‚adni
 Name:		kfte
 Version:	0.7.1
 Release:	1
@@ -19,11 +19,11 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 KDE FTE - A syntax highlighting programmer editor.
 
-%description -l fr
+%description -l fr.UTF-8
 KDE FTE - Un editeur avec colorisation de la syntaxe.
 
-%description -l pl
-KDE FTE - edytor programisty z pod¶wietlaniem sk³adni.
+%description -l pl.UTF-8
+KDE FTE - edytor programisty z podÅ›wietlaniem skÅ‚adni.
 
 %prep
 %setup -q
